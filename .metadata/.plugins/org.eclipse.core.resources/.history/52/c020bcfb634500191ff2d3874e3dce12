@@ -1,0 +1,24 @@
+package jp.co.internous.action;
+
+public class Test {
+
+	public static void main(String[] args) {
+		// TODO 自動生成されたメソッド・スタブ
+
+		Person taro=new Person();
+		taro.name="山田太郎";
+		taro.age="20";
+	
+		//演習②
+		
+		Person taro=new Person();
+		taro.name="山田太郎";
+		taro.age="20";
+	
+		Person taro=new Person();
+		taro.name="山田太郎";
+		taro.age="20";
+	
+	}
+
+}

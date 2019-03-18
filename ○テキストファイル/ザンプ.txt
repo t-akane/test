@@ -1,0 +1,104 @@
+XAMPPとMySQL
+
+情報を保存しておく棚
+縦→カラム、フィールド
+横→ロー、レコード
+
+MySQLを実行するには、レンタルサーバ、自宅サーバ、
+もしくはｻﾞﾝﾌﾟをインストールして実行する。
+
+ザンプを起動する
+http://localhost/phpmyadmin/index.php
+にアクセス。
+
+データベースを作成
+データベースの上にテーブルを作成
+
+テーブル操作
+create文　データベースにテーブルを作成
+drop文　　作成したテーブルを削除
+
+データベース操作（クラッド）
+名称-SQL文
+create-insert	情報をテーブルに書き込む。
+road-select	テーブルに入っている情報を呼び出す。
+update-update	テーブルに入っている情報を上書きする。
+delete-delete	テーブルに入っている情報を削除する。
+
+create table テーブル名
+　(カラム名　データ型,);
+
+・テーブル作成
+create table addresslist
+ (user_id int(11),　name varchar(255),mail varchar(255),
+ tell varchar(255),prefecture varchar(255));
+
+・insert
+insert into addresslist(user_id,name,mail,tell,prefecture)
+values("1","山田太郎","abcd123@yahoo.co.jp","03-0000-0000","東京");
+
+・insert複数
+insert into * values
+("","","","",""),
+("","","","",""),
+("","","","","");
+
+・select
+select name from addresslist;
+*=ALL
+複数のカラムはカンマで区切る
+
+select mail from addresslist where prefecture="千葉";
+prefectureが千葉のもののみを抽出
+
+where prefecture="千葉"
+の条件のところは、=以外にも>や
+and,not,or,between a and b,like
+などいろいろ使える。
+
+・update
+update テーブル名 set カラム名="";
+update addresslist set prefecture="埼玉" where user_id=1;
+
+・delte
+delete from テーブル名;
+delete from addresslist where user_id=3;
+
+・ソートの書き方
+select カラム名 from テーブル名 order by 並び替えるカラム名
+
+フルーツ
+create table fruit_stock(id int(11),fruit varchar(255),number int(11),
+price int(11),madein varchar(255));
+
+insert into fruit_stock values
+("1","りんご",33,100,"日本"),
+("2","オレンジ",40,120,"日本"),
+("3","イチゴ",10,250,"日本"),
+("4","ぶどう",25,240,"アメリカ"),
+("5","ナシ",23,150,"日本"),
+("6","パイナップル",15,230,"フィリピン");
+
+select*from fruit_stock order by number asc;
+asc→昇順
+desc→降順
+
+select*from fruit_stock where number>=25
+order by price desc;
+
+
+・データの集計　
+該当する件数を取得
+select count(カラム名)from テーブル名;
+
+select count(fruit)from fruit_stock
+where price>=200 and madein="日本";
+
+値の合計値を取得する
+select sum(カラム名)from テーブル名;
+select sum(number)from fruit_stock;
+max,minもあるそれぞれ最大値、最小値を返す。
+
+平均値を取得する
+select avg(カラム名)from テーブル名;
+

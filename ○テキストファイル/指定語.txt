@@ -1,0 +1,108 @@
+●指定語メモ
+リンクの挿入 hyper reference
+<a href="">
+
+画像の挿入 source
+<img src="">
+
+テーブル
+<table>でかこむ
+その中に
+行の定義<tr></tr>Table Row
+列の定義<td></td>Table Date
+
+フォーム
+<form method = "XXX" action="XXX">
+
+CSSを読み込むとき
+ <link rel="stylesheet"type="text/css"href="style.css">
+
+divはグルーピング
+複数の記述をまとめたいときに使う
+divclassはそのグループに名前をつけること
+
+id→#
+class→.
+
+font-family:"","","",・・・
+表示させたいフォントを、優先順位順に左から
+
+text-align：center or left or right・・・
+真ん中表示か、右寄せかなど
+
+line-height
+行間を空ける。行と行の間が広くなる。
+
+1emで100%分、2em＝２００％。％で打ち込んでもいい。もしくはピクセル（px）
+
+箇条書きの黒ぽちをかえる。
+list-style-type:***
+例）disc,circle,square,none
+
+カンマ区切り＝いずれかに該当すれば適応
+スペース区切り＝～の中の～のみに適応。
+ドット区切り＝～かつ～なものに適応。
+
+font-family:フォントの種類の指定。
+
+線
+border　基本の枠線
+border-top 上だけ
+-left
+-right
+-bottom
+
+線の種類
+solid
+double
+dotted
+dashed
+
+カスタマイズ
+margin
+padding
+これも同様に、-topなど、方向別に管理可能。
+
+
+ボックス要素
+width
+height
+backgroundcolor
+
+ポジション
+position:absolute;ブラウザ左上からの絶対値を指定
+position:relative;もともとも位置からの相対値
+position:fixed;ブラウザ左上からの絶対値を固定。
+　　　　　　　　スクロールしても画面の中にい続ける。
+
+上から下ではなくて左から右になる
+float:left;(rightもある）
+コマンドの後はclear:left;しないとずっと右に流れることになる
+
+テキストや画像を中央寄せにしたいとき
+div、p、display:blockでブロック要素にする。
+次に,cssで上記記述に対してtext-align:centerを指定する。
+
+そのブロック要素事態を画面の中央にするとき
+margin:0　auto;　を指定。
+
+横　text-align:center;
+縦　line-height:100px;
+
+ブロックのとき
+横でだけ真ん中、上よせ
+margin-left:auto;
+margin-right:auto;
+
+ブロック管理
+display:inline-block;(float:left;とだいたい一緒)
+display:block;
+display:inline;
+
+
+
+
+
+
+
+

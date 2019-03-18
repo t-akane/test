@@ -1,0 +1,158 @@
+コマンドプロンプト
+
+ザンプ起動
+winR→cmd→起動
+
+id,pw必要
+mysql -u root -p
+MariaDBでログイン成功
+
+show　見る
+use　使うデータベースへ移動
+desc　構造を見る
+
+create、insertなどはザンプと同様に
+テーブルも作成できる
+
+alter table　構造の変更
+
+テーブル名変更」
+alter table　テーブル名 rename 新しい名前;
+カラム名変更
+alter table　テーブル名 change　変更するカラム名　データ型;
+データ型のみを変更
+alter table　テーブル名 modify　カラム名　新しいデータ型;
+カラムの追加
+alter table　テーブル名 add　カラム名　データ型;
+カラムを削除する
+alter table　テーブル名 drop　カラム名;
+
+
+・データベースとは
+create
+read
+update
+delete
+頭文字でcrudクラッド
+これが基本4操作
+
+レコード　ひとつのデータ
+フィールド　テーブル内に作成される目的
+
+関係型データベース
+データを表形式で管理する
+
+データベース管理システム（DBMS）
+
+・SQLとは
+structured Query Language
+データベースだけだと機能しない。
+ユーザーとの間に入って、コマンドに応じてDBを使ってくれる。
+
+・ほか
+一覧を表示させる
+show datebases;
+show tables;
+
+●オプション設定　
+・必須入力 not null
+空欄にできない
+
+・主キー primary key　
+重複を避けるindex付与、自動的にnotnull
+
+・自動連番　auto_increment　
+自動的に連番値が登録されてゆく
+必ず整数のデータ型を宣言
+
+・ユニークキー unique
+重複するものが登録できなくなる
+primaryとの違いはnullが登録できる点。
+自動的にindexも付与される。
+
+・索引付与　index
+フルスキャンしなくても見つけられる仕組み
+負担減、早くなった
+大きなデータや、よくアクセスする値につけるとよい。
+
+・キー　key
+２つ使い方がある。
+①primarykey
+②index
+
+create table lesson
+ (ind int not null primary key auto_increment,
+ name vachar(100) unique,
+ point int,
+ team enum('red','blue','green'),
+ index(name),
+ key point(point));
+
+●フィールドのオプション設定
+
+・enum
+()内に記述したデータのみ扱うことができる。それ以外は登録することはd機内。
+
+・default
+指定がなければ自動的にdefaultで指定された値が登録される。
+
+フィールドのオプション設定の確認
+desc lesson;
+
+○データの登録
+insert into テーブル名(フィールド１,フィールド２,・・・）
+values(フィールド１のデータ,・・・）;
+
+○データの集計
+データの件数の表示
+select count from *;
+指定したカラムの最大値
+select max from *;
+合計値sum
+平均avg
+チームごとの平均　group by
+
+文字列の表示
+select name,length(name) from lesson;
+カラムの文字列の連結
+select concat(name,'(',team<')') from lesson;
+
+
+●並べ替え
+
+昇順(order by)
+select * from テーブル名 order by point;
+降順(order by desc)
+select * from テーブル名 order by point desc;
+指定した件数だけ(limit)
+select * from テーブル名 limit 3;
+途中から指定した件数だけ
+select * from テーブル名 limit 2,2;
+
+
+●テーブル結合
+種類
+内部結合　INNER JOIN
+外部結合　
+　左外部　LEFT　OUTER　JOIN
+　右外部　RIGHT　OUTER JOIN
+　完全外部　FULL OUTER JOIN
+交差結合　CROSS JOIN
+
+内部結合
+結合するテーブルの双方にてフィールドが一致するレコード
+A∩B  ：A と B の両方に属する要素全体の集合（かつ，共通部分，積集合，intersection）
+外部結合
+一致するデータに加えて、どちらかのテーブルのみにしかないデータについても表示される。
+A∪B  ：A と B の少なくとも一方に属する要素全体の集合（または，和集合，union）
+
+
+
+
+
+
+
+
+
+
+
