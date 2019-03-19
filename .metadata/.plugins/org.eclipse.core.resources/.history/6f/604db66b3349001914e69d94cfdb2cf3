@@ -1,0 +1,17 @@
+package jp.co.internous.action;
+
+public class Iphone {
+	public static void main(String[] args){
+
+	SmartPhone iphone=new SmartPhone();
+	iphone.play(){System.out.println("再生(ハイレゾ機能)");};
+	iphone.stop(){System.out.println("停止(ハイレゾ機能)");};
+	iphone.next(){System.out.println("次へ(ハイレゾ機能)");};
+	iphone.back(){System.out.println("戻る(ハイレゾ機能)");};
+	iphone.call(){System.out.println("電話");};
+	iphone.mail(){System.out.println("メール");};
+	iphone.photo(){System.out.println("写真");};
+	iphone.internet(){System.out.println("インターネット");};
+	}
+}
+

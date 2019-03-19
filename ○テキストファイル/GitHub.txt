@@ -14,12 +14,14 @@ harugakita03
 コマンドプロンプト
 winR
 cmd
-C:\Users\internousdev\Desktop\workspace-tateno
 
 cd でフォルダを指定
 
 
 git pull　アプデ
+
 git add --all 準備
 git commit -m "この中にコメント"
 git push　フォルダの中身をアップロード
+
+cd Desktop\workspace\workspace-tateno\test

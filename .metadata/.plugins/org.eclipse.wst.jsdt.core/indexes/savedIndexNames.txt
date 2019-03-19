@@ -1,0 +1,9 @@
+INDEX VERSION 1.3+C:\Users\internousdev\Desktop\workspace\workspace-tateno\test\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2795787554.index
+3376236269.index
+2104467821.index
+2055351946.index
+1227648838.index
+417912519.index
+2107518008.index
+710339077.index
