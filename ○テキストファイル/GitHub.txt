@@ -21,7 +21,18 @@ cd でフォルダを指定
 git pull　アプデ
 
 git add --all 準備
-git commit -m "この中にコメント"
+git commit -m "コメント"
 git push　フォルダの中身をアップロード
 
 cd Desktop\workspace\workspace-tateno\test
+
+
+●コマンドプロンプトでの入力方法
+cd..でひとつ上の階層に。users直下。
+mysql -u root -p
+pass:mysql
+
+show databases;
+use DB名;
+show tables;
+select*from テーブル名;
