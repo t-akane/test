@@ -1,4 +1,3 @@
-<%@page import="java.io.PrintWriter"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -17,17 +16,17 @@
 <table border=1>
 <tr>
 	<td><strong>エラーメッセージ</strong></td>
-	<td><%=exception.getMessage()%></td>
+	<td><%=exception.getMessage() %></td>
 </tr>
 
 <tr>
 	<td><strong>例外を文字列に変換</strong></td>
-	<td><%=exception.toString()%></td>
+	<td><%=exception.toString() %></td>
 </tr>
 
 <tr>
 	<td><strong>スタックトレース</strong></td>
-	<td><%=exception.printStackTrace(new java.io.PrintWriter(out))%></td>
+	<td><% exception.printStackTrace(new java.io.PrintWriter(out));%></td>
 </tr>
 
 

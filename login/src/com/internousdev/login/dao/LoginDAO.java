@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.internousdev.login.dto.LoginDTO;
 import com.internousdev.login.util.DBConnector;
 
 public class LoginDAO {

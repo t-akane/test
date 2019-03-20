@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<%@page errorPage="tota-error.jsp" %>
+<%@page errorPage="total-error.jsp" %>
 <%
 request.setCharacterEncoding("UTF-8");
 int price=Integer.parseInt(request.getParameter("price"));
