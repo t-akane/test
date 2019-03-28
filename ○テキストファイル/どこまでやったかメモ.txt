@@ -1,0 +1,72 @@
+
+
+*****＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊
+覚えておく必要のあること
+・Javaとデータ接続
+・sqlのcrud
+・コマンドプロンプト
+データ並べ替え
+テーブル結合
+・コレクションフレームワーク
+リスト、マップ、（セット）
+
+・struts２
+
+*****＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import com.internousdev.webproj2.util.*;
+
+
+
+
+*****＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊
+
+	private String get＊(){
+		return ＊;
+	}
+	
+	public void set＊(String ＊){
+		this.＊=＊;
+	}
+
+*****＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊
+System.out.println();		
+*****＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊
+
+
+web.xmlは画面を表示する為の設定ファイル。
+
+
+パッケージが3つ
+アクション
+DAO
+UTIL→DBコネクター
+
+jspとクラスを対応するように2つずつ作っている
+jspはhtmlみたいなかんじ？
+クラスは継承、import、execute
+
+DAO,DTOの役割
+
+DAO　【Data Access Object】
+システムや仕組みに対する操作を実装したオブジェクトのこと。
+
+DTO  【 Data Transfer Object 】 
+データをしまったり、読み出しするときのメソッドを定義したオブジェクト。
+プログラム間やコンピュータ間でデータを受け渡す時に使う。
+
+演習では、ゲッターとセッターがほとんど。
+
+
+
+struts.xmlの役割
+jspは頭文字が小文字なのはなぜ
+
+

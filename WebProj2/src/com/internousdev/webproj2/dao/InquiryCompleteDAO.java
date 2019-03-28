@@ -13,7 +13,7 @@ public class InquiryCompleteDAO {
 		Connection con=db.getConnection();
 
 
-		String sql="insesrt into inquiry values(?,?,?)";
+		String sql="insert into inquiry values(?,?,?)";
 		try{
 			PreparedStatement ps=con.prepareStatement(sql);
 			ps.setString(1, name);

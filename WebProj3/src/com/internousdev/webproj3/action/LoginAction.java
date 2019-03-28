@@ -20,10 +20,13 @@ public class LoginAction extends ActionSupport{
 		LoginDTO dto=new LoginDTO();
 
 		dto=dao.select(username, password);
+		//test code
+//		System.out.println(dto.getUsername());
+//		System.out.println(dto.getPassword());
+		//test code
 		if(this.username.equals(dto.getUsername()) &&
-		(this.password.equals(dto.getPassword())))
-
-		{ret=SUCCESS;
+		(this.password.equals(dto.getPassword()))){
+			ret=SUCCESS;
 		}else{
 			ret=ERROR;
 		}
