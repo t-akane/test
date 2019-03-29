@@ -197,6 +197,242 @@ extendsとimplementsを同時に使うこともできる
 パッケージが違えば、同じ名前のクラスはつくれる
 importは、どこのクラスか所在をはっきりさせるためのもの
 
+●3/29
+
+データベースとの接続について
+資料は06を参照
+
+Javaがもともと用意しているコネクタクラス（API）
+APIの種類
+①DriverManager
+②Connection
+③PreparedStatement
+④ResultSet
+⑤SQLException
+
+DB
+演習で使っているのはsql
+DB専用のドライバが必要。jarファイルがそれ。
+sqlであればsql専用のものがある。
+
+DBの種類。ほかには・・・オラクルなど
+
+そもそも、jarファイルというのは？
+Java Archiveファイルの略
+アーカイブファイル
+javaのクラスばかりを集めて圧縮している
+jarファイルは展開しなくてもそのまま使うことができる
+
+DBに接続することをコネクションを作る、という表現をする
+つなげる仕組み全体のことをJDBCという。
+Java
+Data
+Base
+Connectivity
+
+1p目
+何をしているか
+getConnectionするために必要な準備をしている
+
+Strinf urlの書き方
+"jdbc://mysql://　ここまでお約束
+localhostの部分→サーバー名。今回は自分のPCなのでlocal。
+その後・・DB名。ここまでマスト。
+その後は任意。
+autoreconnect=true　再接続をためすか.など。オプション。
+
+public Connection getConnection*A(){
+Connection　　 con　　　=　　　null;
+↑データ型　　　↑変数名
+
+Class.forName(driverName);
+　　　　　　　　↑引数。ドライバのクラス名を指定している。
+引数に指定したドライバがメモリにロードされる。ための部分
+
+con　=　　DriverManager.getConnction(url,user,pasword);
+↑変数。出来上がったコネクションを入れるための箱
+　　　　　　↑API名。　　　↑getConnectionはメソッド名。一番上に出てくるものとはちがうもの。既存のAPIの既存のメソッド名。　　　　　
+				　　　↑必要な情報はすでに変数で入力しているので、変数で指定している。　
+
+//ここは難しいところなので理解は後々
+
+
+return con;
+出来上がったコネクションをかえしている。
+ここが処理において一番大事。
+
+上記はすべて、原本クラス。
+実際に動かすのはインスタンス。
+
+
+●try、catch文について
+例外処理
+プログラムにおける例外（Exception）というのは・・
+
+想定外の出来事、という意味合い≒エラー
+
+予想した動作をしなかった場合の処理
+プログラムは組まれたこと以外に対して対応できない。
+それに対して処理を定めておく。
+
+
+・try分の書き方
+
+try{
+例外が発生する可能性のある処理
+
+}catch(例外の種類 ｽﾍﾟｰｽ 変数名){
+例外が実際起きた場合にどうするかの処理
+
+}
+
+
+e.printStackTrace();について
+例外クラスはすべて持っているメソッド
+上の行でeに代入した型のエラー内容を、そのまま出力する
+
+catch文を複数書くときというのは・・・
+発生したエラーの種類によって内容を書き換えたいときに使い分ける
+
+
+
+●DAOについて
+Connectionは道を作るだけ
+それに対して処理を行うのはほかのクラス
+DAOはAccessなのでアクセスクラス
+
+
+DBConnector db= new DBConnector();
+
+//上記で作った原本をインスタンス化
+
+Connection con= db.getConnection*A();
+//dbのgetConnectionする処理がぜんぶconの箱にいれられた
+
+String sql="select*from test_table where user_name=? and password=?";
+//users、passwordが？になっているのは何か特定の値を代入するわけではないため
+？のことはプレイスホルダと呼ぶ。場所を保持するだけ。
+
+　　　　　　　　　　　　↓edなし。メソッド名　　　　　　　　　↓上記の""内
+PreparedStatement ps=con.prepareStatement(sql);
+↑型。preparestatement型。statementはsql文を指している。
+あらかじめ用意されたsql文。
+
+ps.setString(1,name);
+//1番目のプレイスホルダにnameを代入してください。
+ps.setString(2,password);
+
+Result set re=ps.executeQuery();
+　　　　　　　　　↑セレクト文を実行してください
+
+
+if(rs.next()){
+//if文の()内は基本boolean
+必ずしも統合不等号は書かれていないが、trueになれば実行する、という大前提がある
+
+Resultsetは戻り値に矢印が含まれている。初期値では項目名、一番上の行を示している。
+
+ネクストメソッドの働き
+１．矢印を一行下にずらす
+２．矢印の先にデータがあれば、戻り値trueを返す。
+　　なければ（＝該当するデータがない場合は）falseを返す。
+
+つまり、入力されたデータに合致する業があるか上から下まで調べて、
+あればtrueを返す。
+なければ「該当するデータはありません」
+
+簡単に言うと：該当データがあれば処理をする。
+
+
+con.close();の意味
+
+クローズメソッド
+必要な処理のひとつ。
+コネクションは最初に作った道。一連の操作が終わった後で、道を閉じる。
+理由：コネクションはメモリ上に作られる。
+閉じていないままだとPCを圧迫するので。
+
+DAOの働き。実際の働き部分。
+上記部分も原本クラス。
+DBConnectorに対しては司令塔クラスだが、この原本もインスタンス化される必要がある。
+
+
+●testクラス
+これが最終的な司令塔クラス。
+
+資料の7p、⑤あたり
+
+selectAllについて
+
+基本は一緒
+差分だけ
+
+String sql="select*from test_table";
+//allなのでプレイスホルダが必要なくなっている
+
+while(rs.next()){
+//ifがwhileになっている。ifだと繰り返しが実行されないため
+データがある限り下に下に・・
+
+
+11p⑬insert
+
+
+public void insert(int user_id, String name, String password){
+//int型のuser_id、Stringのname・・・という引数を3つ指定している。
+
+String sql="insert into test_table values(?,?,?)";
+//でた、プレイスホルダ。test_tableにisnert予定。値はあとで。
+
+ps.setInt(1,user_id);
+ps.setString(2,name);
+ps.setString(3,password);
+
+//ここからがだいぶちがう！
+int i=ps.executeUpdate(); //Queryではなくなった。格納する変数もResultSetではなくint型になった。
+int iは変更されたデータの件数。
+
+データをを更新するという意味の
+executeUpdate();
+削除でも更新でも挿入でも、すべてこのメソッドを使用する。
+
+
+CRUDのなんとなくの役割
+create//一番仲間はずれ。そもそもユーザーに関係がない。枠のほうだから
+read（select）//2番目仲間はずれ。出力するだけでdbに影響を与えないから。
+update
+delete
+
+
+SQL文		メソッド		戻り値
+------------------------------------------------------
+select		executeQuery()		ResultSet
+------------------------------------------------------
+insert		executeUpdate()		int型(変更したデータの件数)
+update
+delete
+------------------------------------------------------
+上記すべて	execute			なし		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
