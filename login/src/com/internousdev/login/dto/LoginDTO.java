@@ -5,6 +5,10 @@ public class LoginDTO {
 	private String name;
 	private String password;
 
+	//action,DAO,DTOの順番。
+	//DTOはテンプレを貸すイメージではなく、DTOの中にDAOがアクセスして、
+	//DTOの雛形はDTOで実行される。
+
 	public int getId(){
 		return id;
 	}
