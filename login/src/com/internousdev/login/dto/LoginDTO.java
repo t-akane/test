@@ -7,7 +7,9 @@ public class LoginDTO {
 
 	//action,DAO,DTOの順番。
 	//DTOはテンプレを貸すイメージではなく、DTOの中にDAOがアクセスして、
-	//DTOの雛形はDTOで実行される。
+	//DTO自身で実行される。
+
+	//ActionでもDTO、DAOでもDTOだから一度の手続きで2回使用？
 
 	public int getId(){
 		return id;
