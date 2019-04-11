@@ -2,16 +2,16 @@ package com.internousdev.ecsite.dto;
 
 public class MyPageDTO {
 
-	private String itemName;
-	private String totalPrice;
-	private String totalCount;
-	private String payment;
+	public String itemName;
+	public String totalPrice;
+	public String totalCount;
+	public String payment;
 
-	//以下、追加分
-	//写経は全部publicになってたけど、たぶんprivateであってる
-	private String userName;
-	private String id;
-	private String insert_date;
+	//privateじゃなくてpublicになってる
+
+	public String userName;
+	public String id;
+	public String insert_date;
 
 
 	public String getItemName(){

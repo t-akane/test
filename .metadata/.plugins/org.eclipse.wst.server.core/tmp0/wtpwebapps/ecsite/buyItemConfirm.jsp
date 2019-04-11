@@ -11,6 +11,8 @@
 <meta http-equiv="imagetoolbar" content="no"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<!-- //これの追加を忘れたので、ボタンが押せなかった。 -->
 
 <title>buyItemConfirm画面</title>
 
@@ -73,11 +75,10 @@ function submitAction(url){
 	</div>
 	<div id="main">
 	<div id="top">
-	<p>BuyItemConfirm</p>
+	<p>BuyItem</p>
 	</div>
 	<div>
-		<s:form action="BuyItemConfirmAction">
-			<table>
+		<s:form>
 			<tr>
 				<td>
 					商品名
@@ -91,7 +92,7 @@ function submitAction(url){
 					値段
 				</td>
 				<td>
-					<s:property value="session.buyItem_price"/>
+					<s:property value="session.total_price"/>
 						<span>円</span>
 				</td>
 			</tr>
@@ -100,7 +101,7 @@ function submitAction(url){
 					購入個数
 				</td>
 				<td>
-					<s:property value="session.stock"/>個</td>
+					<s:property value="session.count"/>個</td>
 			</tr>
 
 			<tr>
@@ -121,9 +122,12 @@ function submitAction(url){
 				<td><input type="button" value="完了"
 				 onclick="submitAction('BuyItemConfirmAction')"/></td>
 			</tr>
-			</table>
-			</s:form>
 
+			</s:form>
+<div>
+	<p>前画面へ戻る場合は<a href='<s:url action="GoHomeAction"/>'>こちら</a></p>
+	<p>マイページは<a href='<s:url action="MyPageAction"/>'>こちら</a></p>
+</div>
 
 		</div>
 		</div>

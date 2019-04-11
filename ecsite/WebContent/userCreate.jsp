@@ -71,7 +71,7 @@ table{
 	</div>
 	<div>
 		<s:if test='errorMessage !=""'>
-<!-- ここなんか変な感じ -->
+
 			<s:property value="errorMessage" escape="false"/>
 			</s:if>
 			<table>

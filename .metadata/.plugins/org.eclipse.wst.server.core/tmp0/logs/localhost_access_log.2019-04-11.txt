@@ -1,0 +1,10 @@
+127.0.0.1 - - [11/Apr/2019:13:44:24 +0900] "GET / HTTP/1.1" 404 1019
+0:0:0:0:0:0:0:1 - - [11/Apr/2019:13:44:29 +0900] "GET /template2/ HTTP/1.1" 200 1540
+0:0:0:0:0:0:0:1 - - [11/Apr/2019:13:45:08 +0900] "GET /template2/ HTTP/1.1" 200 1540
+0:0:0:0:0:0:0:1 - - [11/Apr/2019:13:45:08 +0900] "GET /favicon.ico HTTP/1.1" 404 1041
+0:0:0:0:0:0:0:1 - - [11/Apr/2019:13:45:26 +0900] "POST /template2/HomeAction.action;jsessionid=D97F260AD33CF12414847BBDDB0ED983 HTTP/1.1" 200 2048
+0:0:0:0:0:0:0:1 - - [11/Apr/2019:13:45:32 +0900] "POST /template2/LoginAction.action HTTP/1.1" 200 2427
+0:0:0:0:0:0:0:1 - - [11/Apr/2019:13:45:34 +0900] "POST /template2/BuyItemAction.action HTTP/1.1" 200 1977
+0:0:0:0:0:0:0:1 - - [11/Apr/2019:13:45:36 +0900] "POST /template2/BuyItemConfirmAction.action HTTP/1.1" 200 1408
+0:0:0:0:0:0:0:1 - - [11/Apr/2019:13:45:38 +0900] "GET /template2/MyPageAction.action HTTP/1.1" 200 2237
+0:0:0:0:0:0:0:1 - - [11/Apr/2019:13:45:40 +0900] "GET /template2/HomeAction.action HTTP/1.1" 200 2048

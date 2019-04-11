@@ -21,12 +21,13 @@ public class MyPageDAO {
 		ArrayList<MyPageDTO>myPageDTO=new ArrayList<MyPageDTO>();
 
 		String sql=
-				"SELECT ubit.id,iit.item_name,ubit.total_price,ubit.total_count,ubit.pay,ubit.insert_date"
-				+ "FROM user_buy_item_transaction6 ubit"
-				+ "LEFT JOIN item_info_transaction6 iit"
-				+ "ON ubit.item_transaction_id=iit.id"//どこを軸に結合するか
-				+ "WHERE ubit.item_transaction_id=? AND ubit.user_master_id=?"
-				+ "ORDER BY inser_date DESC";
+				"SELECT ubit.id,iit.item_name,ubit.total_price,ubit.total_count,ubit.pay,ubit.insert_date "
+				+ "FROM user_buy_item_transaction6 ubit "
+				+ "LEFT JOIN item_info_transaction6 iit "
+				+ "ON ubit.item_transaction_id=iit.id "
+				+ "WHERE ubit.item_transaction_id=? "
+				+ "AND ubit.user_master_id=? "
+				+ "ORDER BY insert_date DESC";
 
 				//↑まちがえやすいので要注意。テーブル結合を行っている。
 
@@ -36,7 +37,7 @@ public class MyPageDAO {
 			preparedStatement.setString(2, user_master_id);
 			ResultSet resultSet=preparedStatement.executeQuery();
 
-			if(resultSet.next()){
+			while(resultSet.next()){
 				MyPageDTO dto=new MyPageDTO();
 				dto.setId(resultSet.getString("id"));
 				dto.setItemName(resultSet.getString("item_name"));
@@ -45,6 +46,14 @@ public class MyPageDAO {
 				dto.setPayment(resultSet.getString("pay"));
 				dto.setInsert_date(resultSet.getString("insert_date"));
 				myPageDTO.add(dto);
+				//test code
+				System.out.println(dto.getId());
+				System.out.println(dto.getItemName());
+				System.out.println(dto.getTotalPrice());
+				System.out.println(dto.getTotalCount());
+				System.out.println(dto.getPayment());
+				System.out.println(dto.getInsert_date());
+				//test code
 			}
 	}catch(Exception e){
 		e.printStackTrace();

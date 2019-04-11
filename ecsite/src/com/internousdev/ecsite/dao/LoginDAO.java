@@ -16,6 +16,7 @@ public class LoginDAO {
 	public LoginDTO getLoginUserInfo(String loginUserId,String loginPassword){
 
 		String sql="SELECT*FROM login_user_transaction6 where login_id=? AND login_pass=?";
+		//後にプレイスホルダで置換する値がある列のみ。whereで指定している
 
 	try{
 		PreparedStatement preparedStatement=connection.prepareStatement(sql);

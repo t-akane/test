@@ -10,8 +10,7 @@ import com.internousdev.ecsite.util.DBConnector;
 public class BuyItemDAO {
 
 	public BuyItemDTO getBuyItemInfo(){
-		//LoginDAOと違って、()内に値がない
-
+		//引数なし
 		DBConnector dbConnector=new DBConnector();
 		Connection connection=dbConnector.getConnection();
 		BuyItemDTO buyItemDTO=new BuyItemDTO();
@@ -28,11 +27,8 @@ public class BuyItemDAO {
 			buyItemDTO.setId(resultSet.getInt("id"));
 			buyItemDTO.setItemName(resultSet.getString("item_name"));
 			buyItemDTO.setItemPrice(resultSet.getString("item_price"));
-			//test code
-			System.out.println(buyItemDTO.getId());
-			System.out.println(buyItemDTO.getItemName());
-			System.out.println(buyItemDTO.getItemPrice());
-			//test code
+			//DAOの結果をDTOするけど、DAOの中でもDTOしている
+			//1回の処理につき、2回DTOするということなのか？
 		}
 
 	}catch(Exception e){

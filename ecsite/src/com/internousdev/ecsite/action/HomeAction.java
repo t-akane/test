@@ -13,7 +13,8 @@ public class HomeAction extends ActionSupport implements SessionAware{
 
 	public String execute(){
 		String result="login";
-		//ここで指定したloginというのは、どこのファイルにつながるのだろうか
+		//ここで指定したloginというのは、どこにつながるのだろうか
+		//→strutsファイル
 		if(session.containsKey("id")){
 			//containskey　指定した値があればtrue、なければfalse
 
@@ -22,6 +23,7 @@ public class HomeAction extends ActionSupport implements SessionAware{
 			BuyItemDAO buyItemDAO=new BuyItemDAO();
 			BuyItemDTO buyItemDTO=buyItemDAO.getBuyItemInfo();
 			//DAOの結果を、DTOする
+
 			session.put("id",buyItemDTO.getId());
 			session.put("buyItem_name", buyItemDTO.getItemName());
 			session.put("buyItem_price", buyItemDTO.getItemPrice());
@@ -31,6 +33,7 @@ public class HomeAction extends ActionSupport implements SessionAware{
 
 		}
 		return result;
+		//resultがいっぱい・・
 	}
 		@Override
 		public void setSession(Map<String,Object>session){
