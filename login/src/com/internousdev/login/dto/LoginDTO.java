@@ -6,10 +6,7 @@ public class LoginDTO {
 	private String password;
 
 	//action,DAO,DTOの順番。
-	//DTOはテンプレを貸すイメージではなく、DTOの中にDAOがアクセスして、
-	//DTO自身で実行される。
-
-	//ActionでもDTO、DAOでもDTOだから一度の手続きで2回使用？
+	//DTOは贈答箱
 
 	public int getId(){
 		return id;

@@ -34,8 +34,6 @@ public class LoginDAO {
 		}
 		}catch(SQLException e){
 			e.printStackTrace();
-
-			//上部でthrowsしているのにtrycatchなのはなぜ
 		}finally{
 	}con.close();
 	return dto;

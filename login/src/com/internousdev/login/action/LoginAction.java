@@ -1,13 +1,19 @@
 package com.internousdev.login.action;
 import java.sql.SQLException;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.login.dao.LoginDAO;
 import com.internousdev.login.dto.LoginDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class LoginAction extends ActionSupport{
+public class LoginAction extends ActionSupport implements SessionAware{
 	private String name;
 	private String password;
+
+	public Map<String,Object>session;
+
 
 	public String execute()throws SQLException{
 		//例外処理はsqlにまる投げする
@@ -19,15 +25,21 @@ public class LoginAction extends ActionSupport{
 		LoginDTO dto=new LoginDTO();
 
 		dto=dao.select(name,password);
-		//daoした結果のnameとpasswordをdtoにいれて実行する
+		//daoした結果（DBと接続した結果）のnameとpasswordをdtoにいれて実行する
 
 		if(name.equals(dto.getName())){
 			if(password.equals(dto.getPassword())){
 				ret=SUCCESS;
 				//dtoで実行したname、passwordがこのメソッド内のname、passwordと同じであればサクセス
 			}
+		//ここから
+		session.put("name", dto.getName());
+		session.put("password", dto.getPassword());
+
+		//ここまでを追加。
+
 		}return ret;
-		//これなに
+
 	}
 	public String getName(){
 		return name;
@@ -41,9 +53,13 @@ public class LoginAction extends ActionSupport{
 	public void setPassword(String password){
 		this.password=password;
 	}
-	//ゲッターセッターというのは特定の目的のために設置するというよりは、
-	//アクセスされる可能性があるから間口あけとこう的なものなのですか
-
+	public Map<String,Object>getSession(){
+		return session;
 	}
+	public void setSession(Map<String,Object>session){
+		this.session=session;
+	}
+	//セッターゲッターは外部から取得するためのもの
+}
 
 

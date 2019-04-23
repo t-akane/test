@@ -22,8 +22,8 @@ public class MyPageDAO {
 
 		String sql=
 				"SELECT ubit.id,iit.item_name,ubit.total_price,ubit.total_count,ubit.pay,ubit.insert_date "
-				+ "FROM user_buy_item_transaction6 ubit "
-				+ "LEFT JOIN item_info_transaction6 iit "
+				+ "FROM user_buy_item_transaction6 as ubit "
+				+ "LEFT JOIN item_info_transaction6 as iit "
 				+ "ON ubit.item_transaction_id=iit.id "
 				+ "WHERE ubit.item_transaction_id=? "
 				+ "AND ubit.user_master_id=? "

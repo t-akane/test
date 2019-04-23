@@ -1,0 +1,2 @@
+127.0.0.1 - - [23/Apr/2019:15:47:41 +0900] "GET / HTTP/1.1" 404 1019
+0:0:0:0:0:0:0:1 - - [23/Apr/2019:15:47:42 +0900] "GET /kadai1/WEB-INF/classes/kadai1/ListPractice.java HTTP/1.1" 404 1017

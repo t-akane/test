@@ -1,0 +1,9 @@
+package kadai1;
+import java.util.List;
+import java.util.ArrayList;
+
+public class ListPractice {
+	List<String>personList=new ArrayList<String>();
+	list.add("sato",28);
+
+}

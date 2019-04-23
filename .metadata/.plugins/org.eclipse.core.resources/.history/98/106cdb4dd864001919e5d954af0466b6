@@ -1,0 +1,68 @@
+package com.internousdev.login.action;
+import java.sql.SQLException;
+
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
+
+import com.internousdev.login.dao.LoginDAO;
+import com.internousdev.login.dto.LoginDTO;
+import com.opensymphony.xwork2.ActionSupport;
+
+public class LoginAction extends ActionSupport implements SessionAware{
+	private String name;
+	private String password;
+
+	public Map<String,Object>session;
+
+
+	public String execute()throws SQLException{
+		//例外処理はsqlにまる投げする
+
+		String ret=ERROR;
+		//初期値
+
+		LoginDAO dao=new LoginDAO();
+		LoginDTO dto=new LoginDTO();
+
+		dto=dao.select(name,password);
+		//daoした結果のnameとpasswordをdtoにいれて実行する
+//
+//		if(name.equals(dto.getName())){
+//			if(password.equals(dto.getPassword())){
+//				ret=SUCCESS;
+				//dtoで実行したname、passwordがこのメソッド内のname、passwordと同じであればサクセス
+//			}
+		//ここから
+			if(((LoginDTO)session.get("name")).getLoginFlg()){
+				result=SUCCESS;
+
+				session.put("name",loginDTO.getLoginId());
+
+		//ここまで
+
+		}return ret;
+
+	}
+	public String getName(){
+		return name;
+	}
+	public void setName(String name){
+		this.name=name;
+	}
+	public String getPassword(){
+		return password;
+	}
+	public void setPassword(String password){
+		this.password=password;
+	}
+	@Override
+	//親クラスのメソッド引用。親クラス・・ActionSupport？
+	public void setSession(Map<String,Object>session){
+		this.session=session;
+
+	}
+}
+
+
