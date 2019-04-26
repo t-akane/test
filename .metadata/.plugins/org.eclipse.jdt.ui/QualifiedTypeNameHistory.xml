@@ -4,12 +4,14 @@
 <fullyQualifiedTypeName name="com.internousdev.template.dao.LoginDAO"/>
 <fullyQualifiedTypeName name="com.internousdev.template.dto.BuyItemDTO"/>
 <fullyQualifiedTypeName name="com.internousdev.template.dto.LoginDTO"/>
-<fullyQualifiedTypeName name="java.util.Map"/>
 <fullyQualifiedTypeName name="java.sql.SQLException"/>
 <fullyQualifiedTypeName name="com.internousdev.template.util.DateUtil"/>
 <fullyQualifiedTypeName name="java.sql.Connection"/>
 <fullyQualifiedTypeName name="com.internousdev.template.dto.MyPageDTO"/>
 <fullyQualifiedTypeName name="com.internousdev.template.util.DBConnector"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="java.util.Map.Entry"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="kadai1.Person"/>
 </qualifiedTypeNameHistroy>
