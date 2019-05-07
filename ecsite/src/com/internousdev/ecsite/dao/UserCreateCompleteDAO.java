@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import com.internousdev.ecsite.util.DBConnector;
 import com.internousdev.ecsite.util.DateUtil;
 
-public class UserCreateCompleteDAO {
+public class UserCreateCompleteDAO{
 
 	private DBConnector dbConnector=new DBConnector();
 	private Connection connection=dbConnector.getConnection();

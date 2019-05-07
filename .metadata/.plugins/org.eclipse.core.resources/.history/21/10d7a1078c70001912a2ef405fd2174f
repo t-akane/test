@@ -1,0 +1,40 @@
+package com.internousdev.ecsite.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import com.internousdev.ecsite.util.DBConnector;
+import com.internousdev.ecsite.util.DateUtil;
+
+public class ItemCreateCompleteDAO {
+
+	private DBConnector dbConnector=new DBConnector();
+	private Connection connection=dbConnector.getConnection();
+	//コネクタをprivateにする意味ってなんなんだろう
+	private DateUtil dateUtil=new DateUtil();
+
+	private String sql="INSERT INTO item_info_transaction6(id,item_name,item_price,item_stock,insert_date)VALUES(?,?,?,?,?)";
+
+	public void createUser(String id,String itemName,int itemPrice,int itemStock)throws SQLException{
+
+
+
+		try{
+			PreparedStatement preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.setString(1, id);
+			preparedStatement.setString(2, itemName);
+			preparedStatement.setInt(3, itemPrice);
+			preparedStatement.setInt(4, itemStock);
+			preparedStatement.setString(5, dateUtil.getDate());
+
+			preparedStatement.execute();
+
+	}catch(Exception e){
+		e.printStackTrace();
+	}finally{
+		connection.close();
+}
+}
+}
+
