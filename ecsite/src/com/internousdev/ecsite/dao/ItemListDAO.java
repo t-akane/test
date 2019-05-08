@@ -5,85 +5,37 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
-import com.internousdev.ecsite.dto.MyPageDTO;
+import com.internousdev.ecsite.dto.ItemInfoDTO;
 import com.internousdev.ecsite.util.DBConnector;
-
 public class ItemListDAO {
 
-	DBConnector dbConnector=new DBConnector();
-	Connection connection=dbConnector.getConnection();
+	private DBConnector dbConnector = new DBConnector();
+	private Connection connection = dbConnector.getConnection();
+	public List<ItemInfoDTO> getItemList () throws SQLException {
+		List<ItemInfoDTO> itemInfoDTOList = new ArrayList<ItemInfoDTO>();
+		String sql ="SELECT * FROM item_info_transaction6 ORDER BY id";
+		try {
 
-	public ArrayList<MyPageDTO> getMyPageUserInfo
-		(String item_transaction_id,String user_master_id)
-	throws SQLException{
-
-		ArrayList<MyPageDTO>myPageDTO=new ArrayList<MyPageDTO>();
-
-		String sql=
-				"SELECT ubit.id,iit.item_name,ubit.total_price,ubit.total_count,ubit.pay,ubit.insert_date "
-				+ "FROM user_buy_item_transaction6 as ubit "
-				+ "LEFT JOIN item_info_transaction6 as iit "
-				+ "ON ubit.item_transaction_id=iit.id "
-				+ "WHERE ubit.item_transaction_id=? "
-				+ "AND ubit.user_master_id=? "
-				+ "ORDER BY insert_date DESC";
-
-				//↑まちがえやすいので要注意。テーブル結合を行っている。
-
-		try{
-			PreparedStatement preparedStatement=connection.prepareStatement(sql);
-			preparedStatement.setString(1, item_transaction_id);
-			preparedStatement.setString(2, user_master_id);
-			ResultSet resultSet=preparedStatement.executeQuery();
-
-			while(resultSet.next()){
-				MyPageDTO dto=new MyPageDTO();
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while(resultSet.next()) {
+				ItemInfoDTO dto = new ItemInfoDTO();
 				dto.setId(resultSet.getString("id"));
 				dto.setItemName(resultSet.getString("item_name"));
-				dto.setTotalPrice(resultSet.getString("total_price"));
-				dto.setTotalCount(resultSet.getString("total_count"));
-				dto.setPayment(resultSet.getString("pay"));
+				dto.setItemPrice(resultSet.getInt("item_price"));
+				dto.setItemStock(resultSet.getInt("item_stock"));
 				dto.setInsert_date(resultSet.getString("insert_date"));
-				myPageDTO.add(dto);
-				//test code
-				System.out.println(dto.getId());
-				System.out.println(dto.getItemName());
-				System.out.println(dto.getTotalPrice());
-				System.out.println(dto.getTotalCount());
-				System.out.println(dto.getPayment());
-				System.out.println(dto.getInsert_date());
-				//test code
+				dto.setUpdate_date(resultSet.getString("update_date"));
+				itemInfoDTOList.add(dto);
 			}
-	}catch(Exception e){
-		e.printStackTrace();
-	}finally{
-		connection.close();
-	}return myPageDTO;
-}
-	public int buyItemHistoryDelete(String item_transaction_id,String user_master_id)
-	throws SQLException{
-		DBConnector dbConnector=new DBConnector();
-		Connection connection=dbConnector.getConnection();
-
-		String sql="DELETE FROM user_buy_item_transaction6 WHERE item_transaction_id=? AND user_master_id=?";
-		PreparedStatement preparedStatement;
-		int result=0;
-
-		try{
-			preparedStatement=connection.prepareStatement(sql);
-			preparedStatement.setString(1,item_transaction_id);
-			preparedStatement.setString(2,user_master_id);
-
-			result=preparedStatement.executeUpdate();
-
-		}catch(SQLException e){
+		} catch(Exception e) {
 			e.printStackTrace();
-		}finally{
+		} finally {
 			connection.close();
 		}
-	return result;
+		return itemInfoDTOList;
+	}
 }
-}
-
 

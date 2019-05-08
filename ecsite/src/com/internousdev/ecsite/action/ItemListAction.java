@@ -2,80 +2,39 @@ package com.internousdev.ecsite.action;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
-import com.internousdev.ecsite.dao.MyPageDAO;
-import com.internousdev.ecsite.dto.MyPageDTO;
+import com.internousdev.ecsite.dao.ItemListDAO;
+import com.internousdev.ecsite.dto.ItemInfoDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class ItemListAction extends ActionSupport implements SessionAware{
-
-	public Map<String,Object>session;
-
-	private MyPageDAO myPageDAO=new MyPageDAO();
-
-	private ArrayList<MyPageDTO>itemList=new ArrayList<MyPageDTO>();
-
-	public String deleteFlg;
-	private String message;
-
-	public String execute() throws SQLException{
-
-	if(!session.containsKey("id")){
-		return ERROR;
+public class ItemListAction extends ActionSupport implements SessionAware {
+	private List<ItemInfoDTO> itemInfoDTOList = new ArrayList<ItemInfoDTO>();
+	private Map<String, Object> session;
+	public String execute() throws SQLException {
+			ItemListDAO itemListDAO = new ItemListDAO();
+			itemInfoDTOList = itemListDAO.getItemList();
+			if(!(itemInfoDTOList.size() > 0)) {
+				itemInfoDTOList = null;
+			}
+			String result = SUCCESS;
+		return result;
 	}
 
-
-	//商品履歴を削除しない場合
-	if(deleteFlg==null){
-		String item_name=session.get("id").toString();
-		String user_master_id=session.get("login_user_id").toString();
-
-		itemList=myPageDAO.getMyPageUserInfo(item_name, user_master_id);
-
-
-
-		//商品履歴を削除する場合
-	}else if(deleteFlg.equals("1")){
-		delete();
+	public List<ItemInfoDTO> getItemInfoDTOList() {
+		return itemInfoDTOList;
 	}
-	String result=SUCCESS;
-	return result;
-	}
-	public void delete()throws SQLException{
-
-		String item_transaction_id=session.get("id").toString();
-		String user_master_id=session.get("login_user_id").toString();
-
-		int res=myPageDAO.buyItemHistoryDelete(item_transaction_id, user_master_id);
-
-		if(res>0){
-			myPageList=null;
-			setMessage("商品情報を正しく削除しました。");
-		}else if(res==0){
-			setMessage("商品情報の削除に失敗しました。");
-		}
-	}
-	public void setDeleteFlag(String deleteFlg){
-		this.deleteFlg=deleteFlg;
+	public void setItemInfoDTOList(List<ItemInfoDTO> itemInfoDTOList) {
+		this.itemInfoDTOList = itemInfoDTOList;
 	}
 	@Override
-	public void setSession(Map<String,Object>session){
-		this.session=session;
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
 	}
-
-	public ArrayList<MyPageDTO>getItemList(){
-		return this.itemList;
+	public Map<String, Object> getSession() {
+		return session;
 	}
-
-	public String getMessage(){
-		return this.message;
-	}
-	public void setMessage(String message){
-		this.message=message;
-	}
-
-
-	}
+}

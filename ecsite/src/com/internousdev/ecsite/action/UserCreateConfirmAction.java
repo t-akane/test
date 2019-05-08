@@ -18,6 +18,8 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 
 		String result=SUCCESS;
 
+
+
 		if(!(loginUserId.equals(""))
 				&&!(loginPassword.equals(""))
 				&&!(userName.equals(""))){
@@ -32,8 +34,7 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 		}
 				return result;
 	}
-	//String名が頭小文字、ゲッターセッターのときに大文字になるのは？お約束なのか、
-	//それともそうじゃないと実行されないのか
+
 
 	public String getLoginUserId(){
 		return loginUserId;
@@ -63,7 +64,6 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 	public void setSession(Map<String,Object>session){
 		this.session=session;
 	}
-	//ここの意味が良くわからない。
 
 	public String getErrorMessage(){
 		return errorMessage;

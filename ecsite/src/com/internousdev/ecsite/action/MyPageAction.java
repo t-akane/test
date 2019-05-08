@@ -15,7 +15,6 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 	public Map<String,Object>session;
 
 	private MyPageDAO myPageDAO=new MyPageDAO();
-	//DTOはインスタンス化しないみたい？
 
 	private ArrayList<MyPageDTO>myPageList=new ArrayList<MyPageDTO>();
 
@@ -35,12 +34,6 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 		String user_master_id=session.get("login_user_id").toString();
 
 		myPageList=myPageDAO.getMyPageUserInfo(item_transaction_id, user_master_id);
-
-		//session.put("buyItem_name", myPageDTO.getItemName());
-		//session.put("total_price", myPageDTO.getTotalPrice());
-		//session.put("total_count", myPageDTO.getTotalCount());
-		//session.put("total_payment", myPageDTO.getPayment());
-		//session.put("message","");
 
 
 

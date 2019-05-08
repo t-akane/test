@@ -11,13 +11,11 @@ public class UserCreateCompleteDAO{
 
 	private DBConnector dbConnector=new DBConnector();
 	private Connection connection=dbConnector.getConnection();
-	//コネクタをprivateにする意味ってなんなんだろう
 	private DateUtil dateUtil=new DateUtil();
 
 	private String sql="INSERT INTO login_user_transaction6(login_id,login_pass,user_name,insert_date)VALUES(?,?,?,?)";
 
 	public void createUser(String loginUserId,String loginUserPassword,String userName)throws SQLException{
-
 
 
 		try{
