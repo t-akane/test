@@ -31,16 +31,12 @@ table{
 	margin:0 auto;
 	}
 
-#top{
-	width:780px;
-	margin:30px auto;
-	border:1px solid #333;
-	}
+
 
 #header{
 	width:100%;
 	height:80px;
-	background-color:black;
+	background-color:lightcoral;
 	}
 
 #main{
@@ -52,10 +48,23 @@ table{
 #footer{
 	width:100%;
 	height:80px;
-	background-color:black;
+	background-color:lightcoral;
 	clear:both;
 	}
-
+#top {
+    width:30%;
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #232323;
+    background: #fff8e8;
+    border-left: solid 10px #ffc06e;
+    margin:0 auto;
+    font-size:20px;
+}
+#top p {
+    margin: 0;
+    padding: 0;
+}
 
 </style>
 
@@ -64,11 +73,11 @@ table{
 
 	<div id="header">
 		<div id="pr"></div>
-	</div>
+	</div><br><br>
 	<div id="main">
 	<div id="top">
 	<p>UserCreateConfirm</p>
-	</div>
+	</div><br><br>
 	<div>
 	<h3>登録する内容は以下でよろしいですか。</h3>
 			<table>

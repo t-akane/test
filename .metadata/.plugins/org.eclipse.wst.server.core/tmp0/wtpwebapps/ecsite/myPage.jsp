@@ -26,21 +26,17 @@ body{
 	color:#333;
 	background:#fff;
 	}
-table{
-	text-align:center;
-	margin:0 auto;
-	}
+/* table{ */
+/* 	text-align:center; */
+/* 	margin:0 auto; */
+/* 	} */
 
-#top{
-	width:780px;
-	margin:30px auto;
-	border:1px solid #333;
-	}
+
 
 #header{
 	width:100%;
 	height:80px;
-	background-color:black;
+	background-color:lightcoral;
 	}
 
 #main{
@@ -52,11 +48,62 @@ table{
 #footer{
 	width:100%;
 	height:80px;
-	background-color:black;
+	background-color:lightcoral;
 	clear:both;
 	}
+table{
+  width: 80%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin:0 auto;
+}
 
+table th,table td{
+  padding: 10px 0;
+  text-align: center;
+}
 
+table tr:nth-child(odd){
+  background-color: mistyrose
+}
+table th{
+  background-color: lightcoral
+
+}
+
+#top {
+    width:30%;
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #232323;
+    background: #fff8e8;
+    border-left: solid 10px #ffc06e;
+    margin:0 auto;
+    font-size:20px;
+}
+#top p {
+    margin: 0;
+    padding: 0;
+}
+#button {
+  display       : inline-block;
+  border-radius : 6%;          /* 角丸       */
+  font-size     : 18pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 12px 12px;   /* 余白       */
+  background    : #ffcc99;     /* 背景色     */
+  color         : #ffffff;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+  box-shadow    : 2px 2px 3px #666666;  /* 影の設定 */
+  border        : 2px solid #ffcc99;    /* 枠の指定 */
+}
+#button:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  color         : #ffcc99;     /* 背景色     */
+  background    : #ffffff;     /* 文字色     */
+}
 </style>
 
 </head>
@@ -64,11 +111,11 @@ table{
 
 	<div id="header">
 		<div id="pr"></div>
-	</div>
+	</div><br><br>
 	<div id="main">
 	<div id="top">
 	<p>MyPage</p>
-	</div>
+	</div><br><br>
 
 	<div>
 	<s:if test="myPageList==null">
@@ -96,9 +143,10 @@ table{
 			</tr>
 		</s:iterator>
 			</table>
-				<s:form action="MyPageAction">
+			<br><br>
+				<s:form action="MyPageAction" theme="simple">
 					<input type="hidden" name="deleteFlg" value="1">
-					<s:submit value="削除"/>
+					<s:submit value="購入履歴の削除"/>
 				</s:form>
 				</s:elseif>
 					<s:if test="message !=null">

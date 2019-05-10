@@ -27,15 +27,11 @@ pageEncoding="UTF-8"%>
 				background:#fff;
 			}
 			/* ========ID LAYOUT======== */
-			#top {
-				width:780px;
-				margin:30px auto;
-				border:1px solid #333;
-			}
+
 			#header {
 				width: 100%;
 				height: 80px;
-				background-color: black;
+				background-color: lightcoral;
 			}
 			#main {
 				width: 100%;
@@ -45,13 +41,26 @@ pageEncoding="UTF-8"%>
 			#footer {
 				width: 100%;
 				height: 80px;
-				background-color: black;
+				background-color: lightcoral;
 				clear:both;
 			}
 			#button {
 				margin: 10px;
 			}
-
+#top {
+    width:30%;
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #232323;
+    background: #fff8e8;
+    border-left: solid 10px #ffc06e;
+    margin:0 auto;
+    font-size:20px;
+}
+#top p {
+    margin: 0;
+    padding: 0;
+}
 		</style>
 		<script type="text/javascript">
 			function submitAction(url) {
@@ -64,11 +73,11 @@ pageEncoding="UTF-8"%>
 		<div id="header">
 			<div id="pr">ta
 			</div>
-		</div>
+		</div><br><br>
 		<div id="main">
 			<div id="top">
 				<p>削除確認</p>
-			</div>
+			</div><br><br>
 			<div>
 				<h3>すべてのユーザーを削除します。よろしいですか？</h3>
 				<s:form>

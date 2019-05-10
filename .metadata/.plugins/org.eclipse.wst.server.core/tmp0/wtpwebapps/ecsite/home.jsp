@@ -30,15 +30,12 @@ pageEncoding="UTF-8"%>
 				margin:0 auto;
 			}
 			/* ========ecsite LAYOUT======== */
-			#top {
-				width:780px;
-				margin:30px auto;
-				border:1px
-			}
+
+
 			#header {
 				width: 100%;
 				height: 80px;
-				background-color: black;
+				background-color:lightpink ;
 			}
 			#main {
 				width: 100%;
@@ -48,28 +45,41 @@ pageEncoding="UTF-8"%>
 			#footer {
 				width: 100%;
 				height: 80px;
-				background-color: black;
+				background-color: lightpink;
 				clear:both;
 			}
 			#text-center {
 				display: inline-block;
 				text-align: center;
 			}
+#top {
+    width:30%;
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #232323;
+    background: #fff8e8;
+    border-left: solid 10px #ffc06e;
+    margin:0 auto;
+    font-size:20px;
+}
+#top p {
+    margin: 0;
+    padding: 0;
+}
 		</style>
 	</head>
 
 	<body>
 
 		<div id="header">
-
 		<div id="pr">
 		</div>
 
-		</div>
+		</div><br><br>
 		<div id="main">
 			<div id="top">
-				<p>Home</p>
-			</div>
+				<h1>Home</h1>
+			</div><br><br>
 			<div id=”text-center”>
 				<s:form action="HomeAction">
 					<s:submit value="商品購入"/>
