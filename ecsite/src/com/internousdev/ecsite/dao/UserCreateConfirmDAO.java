@@ -21,9 +21,9 @@ public class UserCreateConfirmDAO{
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, userId);
-			ResultSet resultSet = preparedStatement.executeQuery();
-			while(resultSet.next()) {
-				if (resultSet.getInt("count") > 0) {
+			ResultSet rs = preparedStatement.executeQuery();
+			while(rs.next()) {
+				if (rs.getInt("count") > 0) {
 					result = true;
 				}
 				//isExistsUserInfoメソッド。既存かどうか判定。初期値は重複しない。trueのときはじく。

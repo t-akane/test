@@ -3,8 +3,8 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.internousdev.ecsite.dao.UserCreateConfirmDAO;
 import com.opensymphony.xwork2.ActionSupport;
-
 
 public class UserCreateConfirmAction extends ActionSupport implements SessionAware{
 	private String loginUserId;
@@ -12,7 +12,13 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 	private String userName;
 	public Map<String,Object>session;
 	private String errorMessage;
-	//importして、変数を設定して、そして使わなければならない。面倒。
+
+
+	UserCreateConfirmDAO userCreateConfirmDAO = new UserCreateConfirmDAO();
+	//これの使い方
+
+
+
 
 	public String execute(){
 
@@ -24,9 +30,15 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 				&&!(loginPassword.equals(""))
 				&&!(userName.equals(""))){
 			//もしIDとPWとUserNameがすべて空欄ではなかった場合、下を実行
+			if(userCreateConfirmDAO.isExistsUserInfo(loginUserId)) {
+				setErrorMessage("そのユーザーIDは使用できません。");
+				result=ERROR;
+			}else {
 				session.put("loginUserId", loginUserId);
 				session.put("loginPassword", loginPassword);
 				session.put("userName", userName);
+			}
+
 			//ここで、Map型の中に値を代入している
 		}else{
 			setErrorMessage("未入力の項目があります。");

@@ -35,7 +35,7 @@ pageEncoding="UTF-8"%>
 			#header {
 				width: 100%;
 				height: 80px;
-				background-color:lightpink ;
+				background-color:lightcoral;
 			}
 			#main {
 				width: 100%;
@@ -45,7 +45,7 @@ pageEncoding="UTF-8"%>
 			#footer {
 				width: 100%;
 				height: 80px;
-				background-color: lightpink;
+				background-color: lightcoral;
 				clear:both;
 			}
 			#text-center {
@@ -66,6 +66,25 @@ pageEncoding="UTF-8"%>
     margin: 0;
     padding: 0;
 }
+#btn{
+text-align : center ;
+}
+.button {
+  position: relative;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #FFF;
+  background: sandybrown;/*色*/
+  border-radius: 4px;/*角の丸み*/
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.05);
+  font-weight: bold;
+  border: solid 2px #d27d00;/*線色*/
+
+}
+.button:hover {
+ box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+}
 		</style>
 	</head>
 
@@ -82,7 +101,7 @@ pageEncoding="UTF-8"%>
 			</div><br><br>
 			<div id=”text-center”>
 				<s:form action="HomeAction">
-					<s:submit value="商品購入"/>
+					<s:submit class="button" value="商品購入"/>
 				</s:form>
 				<s:if test="#session.id != null">
 					<p>ログアウトする場合は

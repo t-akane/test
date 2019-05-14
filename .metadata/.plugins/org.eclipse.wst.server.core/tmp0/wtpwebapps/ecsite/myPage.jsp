@@ -85,7 +85,7 @@ table th{
     margin: 0;
     padding: 0;
 }
-#button {
+.button {
   display       : inline-block;
   border-radius : 6%;          /* 角丸       */
   font-size     : 18pt;        /* 文字サイズ */
@@ -99,7 +99,7 @@ table th{
   box-shadow    : 2px 2px 3px #666666;  /* 影の設定 */
   border        : 2px solid #ffcc99;    /* 枠の指定 */
 }
-#button:hover {
+.button:hover {
   box-shadow    : none;        /* カーソル時の影消去 */
   color         : #ffcc99;     /* 背景色     */
   background    : #ffffff;     /* 文字色     */
@@ -146,7 +146,7 @@ table th{
 			<br><br>
 				<s:form action="MyPageAction" theme="simple">
 					<input type="hidden" name="deleteFlg" value="1">
-					<s:submit value="購入履歴の削除"/>
+					<s:submit class="button" value="購入履歴の削除"/>
 				</s:form>
 				</s:elseif>
 					<s:if test="message !=null">
