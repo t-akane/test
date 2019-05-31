@@ -25,7 +25,9 @@ public class LoginAction extends ActionSupport implements SessionAware{
 
 		if(((LoginDTO) session.get("loginUser")).getLoginFlg()) {
 			if((((LoginDTO) session.get("loginUser")).getAdminFlg() != null)
+					//nullはequalで比較することができないので、まずnullでない場合、下のフェーズに進むようにする。
 					&& (((LoginDTO) session.get("loginUser")).getAdminFlg().equals("1"))) {
+				//nullでない場合なので、はじめてequalsで比べることができる。1と一致するかどうか
 				result = "admin";
 			} else {
 				result = SUCCESS;
